@@ -25,7 +25,7 @@ OAEP-> https://github.com/Rupan/rsa
 ---
 
 HASH-> SHA-1, SHA-256: https://github.com/B-Con/crypto-algorithms
- &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;SHA-512: https://github.com/orlp/ed25519
+ &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<br/>SHA-512: https://github.com/orlp/ed25519
 
 
 ## DOCUMENTATIONS
