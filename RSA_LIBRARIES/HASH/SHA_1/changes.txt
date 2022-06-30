@@ -1,0 +1,2 @@
+ - V suboroch sha1.c, sha1.h zmena zadefinovaneho typu WORD
+   na ONE_WORD (duplicita preddefinovaneho typu WORD s mingw gcc prekladacom)

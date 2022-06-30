@@ -1,0 +1,18 @@
+- Presunutie funkcie void pow_mod_faster(struct bn* a, struct bn* b, struct bn* n, struct bn* res)
+  zo suboru /tests/rsa.c do suborov bn.c a bn.h, kvoli zbytocnemu prekladu zdrojoveho kodu rsa.c
+
+V subore bn.h pridanie definicie makier pre vhodne zvolenie velkosti
+BN cisla.
+
+//MJ Choosig right size of static array
+#ifndef MOD_LEN
+  #error Must define MOD_LEN to be 1024,2048,4096
+#elif (MOD_LEN == 1024)
+  #define LEN  256
+#elif (MOD_LEN == 2048)
+  #define LEN  512
+#elif (MOD_LEN == 4096)
+  #define LEN  1024
+#endif
+
+#define BN_ARRAY_SIZE    (LEN / WORD_SIZE)

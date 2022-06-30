@@ -1,0 +1,24 @@
+- Definovanie makra #define _CRT_RAND_S pre generovanie nahodnych cisel na platforme Windows 
+- Uprava funkcie fill_random, pre pouzitie aj na operacnom systeme WINDOWS, pridanie generovania nahodnych
+  cisel aj pre platformu WINDOWS (oaep.c)
+- Pridanie enumeraceno typu pre HASHOVACIE funkcie (HASH_FUNCTION, ktory je zadefinovany v subore ext_oaep.h ),
+  rozsirena moznost pre vyuzitie roznych HASHOVACICH funkcii do funkcii oape_encode, oaep_decode, MGF1 (oaep.c)
+- Pridanie typu NONE do enumeracneho typu lbl_t pre nevyuzitie label-u (oaep.h)
+- Zadokumentovanie #include "tiger.h" , kvoli nevyuzitelnosti hashovacej funkcie tiger (oaep.c)
+- Pridanie kniznic pre vyuzitie HASHOVACICH funkcii a enumeraceno typu HASH_FUNCTION: 
+   #include "../../EXTENSIONS_STUDENT/ext_sha.h"
+   #include "../../EXTENSIONS_STUDENT/ext_oaep.h"
+   (oaep.h)
+- Modifikacia funkcii MGF1, oape_encode, oaep_decode pre vyuzitie hashovaich funkcii
+- Zmazanie pridanej kniznice #include <arpa/inet.h> , ktora je dostupna iba pre Linux platformu,
+  zmazanim tejto kniznice nam vypadne moznost vyuzitia kniznicnej funkcie htonl, ktora sa vyuziva v 
+  MGF1. Riesenie pre nezavislost implementacie na platformach Windows a Linux: zmena vo funkcii MGF1, 
+  namiesto htonl pouzijeme implementaciu:
+   unsigned char* s = (unsigned char*)&i; 
+   *((uint32_t*)(data+seedLen) = ((uint32_t)(s[0] << 24 | s[1] << 16 | s[2] << 8 | s[3]);
+
+- Pridanie premennej decrypted do funkcie: int32_t oaep_decode(uint8_t *EM, uint32_t k, lbl_t label, HASH_FUNCTION hash, uint8_t* decoded)
+ pre ulozenie vysledku (oaep.c oaep.h)
+
+- Pridanie kodu do funkcie oaep_decode: for(int x=0;x<pass;x++) decoded[x] = EM[k-pass+x]; (oaep.c),
+  kvoli ulozeniu desifrovanej spravy

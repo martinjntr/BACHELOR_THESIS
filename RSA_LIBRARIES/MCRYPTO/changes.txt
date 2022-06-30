@@ -1,0 +1,31 @@
+
+Upravy v subore include/bigdigits.h
+-----------------------------------------------------------------------------
+
+Zmena pre moznost vyberu velkosti statickeho pola
+
+
+// MJ Choosig right size of static array
+#ifndef MOD_LEN
+  #error Must define MOD_LEN to be 1024,2048,4096
+#elif (MOD_LEN == 1024)
+  #define MAX_DIG_LEN  32
+#elif (MOD_LEN == 2048)
+  #define MAX_DIG_LEN  64
+#elif (MOD_LEN == 4096)
+  #define MAX_DIG_LEN  128
+#endif
+
+
+Upravy v subore include/mcrypto.h
+-----------------------------------------------------------------------------
+Nezavislost pre generovanie kryptograficky bezpecnych
+nahodnych cisel na operacnych systemoch Linux a Windows:
+
+
+#ifdef __linux__ //MJ platform independent
+	#define LINUX_URANDOM	1	/* use linux's /dev/urandom for cryptographic prng */
+#elif defined _WIN32
+	#define LINUX_URANDOM	0
+#endif
+-----------------------------------------------------------------------------

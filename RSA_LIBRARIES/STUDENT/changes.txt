@@ -1,0 +1,43 @@
+Upravy: bignum.c
+-----------------------------------------------------------------------------------------------
+- Zakomentovanie funkcie printbignum, kvoli nevyuzitelnosti
+- Vo funkcii bignum leftshift(bignum a, int k): res.tab = (block *)malloc((res.size) * sizeof(block));
+  zmena na res.tab = (block *)malloc((res.size + 1) * sizeof(block));  --> zamedzenie overflowu
+
+- GCD funkcia  --> uprava na non-recursive funkciu
+
+- Vo funkcii int millerrabin(bignum n, int t)
+    - za blok kodu: if (compare(n, three) == 0 || compare(n, two) == 0) {
+                         free(two.tab);
+                         free(three.tab);
+                          return 1;
+                 } 
+    pridane:
+        free(two.tab);
+        free(three.tab);
+
+    -  v testovacom bloku: if (isone(beta)) return 0; 
+        uparva na: if (isone(beta)){
+                    free(one.tab);
+                    free(n_minus_one.tab);
+                    free(r.tab);
+                    free(beta.tab);
+                    return 0;
+                }
+
+    - v testovacom bloku: if (compare(beta, n_minus_one) != 0) return 0;
+        uprava na: if (compare(beta, n_minus_one) != 0){
+                free(one.tab);
+                free(n_minus_one.tab);
+                free(r.tab);
+                free(beta.tab);
+                return 0;
+            }
+
+    - na konci iteracnej slucky while (t--) pridanie: free(beta.tab);
+    
+   - Vo funkcii bignum divi(bignum a, bignum n) zmzanie premennej tmp kvoli nevyuzitelnosti
+
+-----------------------------------------------------------------------------------------------
+Upravy: bignum.h
+- Pridanie direktiv pre vyber kompilacie 8-bit a 32-bit systemu (nahrada za povodnu kompilaciu )
