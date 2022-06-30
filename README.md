@@ -13,10 +13,10 @@ In conclusion, I would like to thank the authors of the libraries :)
 
 ## Libraries
 
-STUDENT-> https://github.com/junwei-wang/biginteger
-MCRYPTO-> https://code.google.com/archive/p/libmcrypto/downloads
-KOKKE -> https://github.com/kokke/tiny-bignum-c
-OpenSSL -> https://www.openssl.org/source/
+STUDENT-> https://github.com/junwei-wang/biginteger <br/>
+MCRYPTO-> https://code.google.com/archive/p/libmcrypto/downloads <br/>
+KOKKE -> https://github.com/kokke/tiny-bignum-c <br/>
+OpenSSL -> https://www.openssl.org/source/ <br/>
 
 ---
 
