@@ -33,6 +33,6 @@ In project I created documenatation for cryptographic libraries which is written
 
 
 ## TEST and Compilations
-Every libraray contains subfolder TESTS which contains some examples and makefile for compilation. Libraries are usable for both Linux and Windows operating system.
+Every library contains subfolder TESTS which contains some examples and makefile for compilation. Libraries are usable for both Linux and Windows operating system.
 
 **Compilation:** **make**[number of test] for example: **make** test01
